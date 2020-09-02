@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Pokedex</title>
+</head>
+
+<body>
+    <div class="header">
+        <img src="/images/pokedex_logo.png" alt="Pokedex">
+    </div>
+    <div class="navbar">
+        <h4>Search by name or pokedex number:</h4>
+        <div class="search-box">
+            <form method="get">
+                <input type="text" name="search" id="srch-poke-input" placeholder="Search a Pokemon">
+                <button id="srch-button">Search</button>
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <div class="left-side">
+            <div class="poke-main-info">
+                <span class="poke-name" ><% if (pokeData) { %> <%- pokeData.name %> <% } %> </span>
+                <span class="poke-number" ><% if (pokeData) { %> <%- pokeData.id %> <% } %> </span>
+                <div class="poke-forms">
+                    <div class="normal-form">
+                        <span ><% if (pokeData) { %> Normal Form <% } %></span><br>
+                        
+                    </div>
+                    <div class="shiny-form">
+                        <span ><% if (pokeData) { %> Shiny Form <% } %></span><br>
+                        
+                    </div>
+                </div>
+                <div class="poke-type"></div>
+                <div class="poke-ability"></div>
+            </div>
+        </div>
+        <div class="right-side">
+            <ol class="pokedex-list">
+                <% pokeList.forEach((pokemon) => { %>
+                <li id="<%- pokemon.name %>"> <%- pokemon.name %> </li>
+                <% }) %>
+            </ol>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/javascripts/main.js"></script>
+</body>
+
+</html>
